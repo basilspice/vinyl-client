@@ -1,5 +1,5 @@
 import {useState} from 'react'
-
+import apiUrl from './../apiUrl/apiUrl'
 function Get() {
   const [vinyls, setVinyls] = useState([])
   
