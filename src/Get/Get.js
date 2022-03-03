@@ -4,7 +4,7 @@ function Get() {
   const [vinyls, setVinyls] = useState([])
   
   const handleClick = () => {
-    fetch("http://localhost:4000/vinyls")
+    fetch(apiUrl + '/vinyls')
       .then(response => response.json())
       .then(data => setVinyls(data.vinyls))
   }

@@ -1,12 +1,12 @@
 import {useState} from 'react'
-
+import apiUrl from './../apiUrl/apiUrl'
 
 function Create() {
   const [vinyls, setVinyls] = useState([])
   const [vinyl, setVinyl] = useState({artist: "", album: ""})
 
   const handleClick = () => {
-    fetch("http://localhost:4000/vinyls")
+    fetch(apiUrl + '/vinyls')
       .then(response => response.json())
       .then(data => setVinyls(data.vinyls))
   }
@@ -22,14 +22,14 @@ function Create() {
   const handleSubmit = event => {
     event.preventDefault()
     console.log(vinyl)
-    fetch("http://localhost:4000/vinyls", {
+    fetch(apiUrl + '/vinyls', {
       headers: {
         'Content-Type': 'application/json'
       },
       method: 'POST',
       body: JSON.stringify(vinyl)
     })
-      .then(() => fetch("http://localhost:4000/vinyls"))
+      .then(() => fetch(apiUrl + '/vinyls'))
       .then(response => response.json())
       .then(data => setVinyls(data.vinyls))
       .then(() => setVinyl({artist: "", album: ""}))
